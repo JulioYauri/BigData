@@ -34,20 +34,9 @@ int main(){
     for(auto& th : threads) th.join();
          
     
-    high_resolution_clock::time_point fin = high_resolution_clock::now();
-    duration<double> time_span = duration_cast<duration<double> > (fin - inicio);
-    
-    cout << "duracion " << time_span.count() << " segundos\n"; 
-    cout << "fin\n";
 
     ofstream output("output3.txt");
-
-    cout << "inicia escritura\n";  
-    if(!output.is_open()) {
-        cout << "No se abrió el archivo\n"; 
-        return 0; 
-    }
-    
+  
     unordered_map<string, vector<int> > final_map; 
 
     for(int i = 0; i < THREAD_TOTAL; i++) {
@@ -60,4 +49,8 @@ int main(){
         output << "\n"; 
     }
 
+    high_resolution_clock::time_point fin = high_resolution_clock::now();
+    duration<double> time_span = duration_cast<duration<double> > (fin - inicio);
+    
+    cout << "duracion " << time_span.count() << " segundos\n"; 
 }   
